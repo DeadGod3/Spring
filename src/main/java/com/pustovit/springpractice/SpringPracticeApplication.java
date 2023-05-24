@@ -1,22 +1,18 @@
 package com.pustovit.springpractice;
 
-import com.pustovit.springpractice.controller.UserController;
-import com.pustovit.springpractice.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-
-import java.util.List;
 
 @SpringBootApplication
 public class SpringPracticeApplication {
 
     public static void main(String[] args) {
+        SpringApplication.run(SpringPracticeApplication.class, args);
 //        Ex of DI(Dependencies Injection) with Spring CONTEXT:
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringPracticeApplication.class, args);
-        UserController userController = configurableApplicationContext.getBean(UserController.class);
-        List<User> all = userController.getAll();
-        all.forEach(System.out::println);
+//        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringPracticeApplication.class, args);
+//        UserController userController = configurableApplicationContext.getBean(UserController.class);
+//        List<User> all = userController.getAll();
+//        all.forEach(System.out::println);
 
 
 //        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeanConfiguration.class);

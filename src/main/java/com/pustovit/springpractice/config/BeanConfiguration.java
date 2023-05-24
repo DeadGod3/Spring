@@ -25,7 +25,7 @@ public class BeanConfiguration {
     @Scope("prototype")
 //    Prototype have the same parameters but diff hash and new one
     public User getCustomUser() {
-        return new User("Ihor", "Pustovit", 20);
+        return new User(1,"Ihor", "Pustovit", 20, "+390666753", "3s3@mail.u");
     }
 
     @Bean
