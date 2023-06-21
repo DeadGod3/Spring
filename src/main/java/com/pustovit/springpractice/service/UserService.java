@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
+//    private final FakeUserRepository fakeUserRepository;
     private final UserRepository userRepository;
 
     @Autowired
@@ -18,30 +20,43 @@ public class UserService {
     }
 
     public List<User> getAll() {
-        return userRepository.getAll();
+        return userRepository.findAll();
     }
 
     public User getById(Integer id) {
-        return userRepository.getById(id);
+        return userRepository.findById(id).orElseThrow();
+//        return userRepository.getById(id);
+    }
+    public Optional<User> getOptionalById(Integer id){
+        return userRepository.findById(id);
     }
 
+//    Query with a few parameters from JpaRepository
     public User getByPhoneAndEmail(String phone, String email) {
-        return userRepository.getByPhoneAndEmail(phone, email);
+        return userRepository.getUserByPhoneAndEmail(phone, email);
     }
 
     public User getUserByFilter(String name, String surname, Integer age) {
-        return userRepository.getUserByFilter(name, surname, age);
+        return null;
+//        return userRepository.getUserByFilter(name, surname, age);
     }
 
     public User save(User user) {
         return userRepository.save(user);
     }
 
-    public User update(Integer id, User user) {
-        return userRepository.update(id, user);
+//    To Put(Update User's params need to put his id in Json body
+    public User update(User user) {
+        return userRepository.save(user);
     }
 
+    public Integer updateNameById(String name, Integer id) {
+        return userRepository.update(name, id);
+    }
+
+
     public Integer delete(Integer id) {
-        return userRepository.delete(id);
+         userRepository.deleteById(id);
+         return id;
     }
 }
